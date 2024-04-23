@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Share Modal</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="modalStyle.css">
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+    rel="stylesheet"/>
+</head>
+<body>
+    <div id="c1"></div>
+    <div id="c2"></div>
+
+    <div id="wrapper">
+        <div id="card">
+            
+                <img src="https://imgs.search.brave.com/p1y9My6-WfHMxEcDFGhNe-bGVnw4Vv_s0mMzVyXDTHs/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pLmt5/bS1jZG4uY29tL3Bo/b3Rvcy9pbWFnZXMv/bmV3c2ZlZWQvMDAy/LzQxOC84MTgvNDlh/LmpwZw" alt="">
+            
+                <h2>Ujjawal Tyagi</h2>
+           
+                <h3>Not a Founder, Google</h3>
+           
+            <div class="bottom">
+                <button onclick="openModal()" class="leftb">
+                    <i class="ri-share-forward-fill"></i>
+                    Share my profile
+                </button>
+                <button class="rightb">Follow me</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- pop-up component -->
+    <div class="modal">
+        <div class="modal-header">
+            <h1>Share my profile</h1>
+            <div>
+                <i onclick="closeModal()" class="ri-close-line close"></i>
+            </div>
+        </div>
+
+        <div>
+            <h3>Share this via</h3>
+            <div class="icons">
+                <a href="#" id="fb">
+                    <i class="ri-facebook-fill"></i>
+                </a>
+                <a href="#" id="tw">
+                    <i class="ri-twitter-x-line"></i>
+                </a>
+                <a href="#" id="in">
+                    <i class="ri-instagram-line"></i>
+                </a>
+                <a href="#" id="wh">
+                    <i class="ri-whatsapp-line"></i>
+                </a>
+                <a href="#" id="te">
+                    <i class="ri-telegram-line"></i>
+                </a>
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="overlay" onclick="closeModal()"></div>
+
+    <script src="modalScript.js"></script>
+</body>
+</html>
