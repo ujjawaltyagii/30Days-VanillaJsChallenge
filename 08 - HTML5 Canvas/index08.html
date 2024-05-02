@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HTML5 Canvas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="https://fav.farm/🔥" />
+</head>
+<body>
+<canvas id="draw" width="800" height="800"></canvas>
+<script>
+  const grabCanvas = document.querySelector("#draw");
+  const ctx = grabCanvas.getContext("2d");
+
+  grabCanvas.width = window.innerWidth;
+  grabCanvas.height = window.innerHeight;
+
+  ctx.strokeStyle = "#BADASS";
+  ctx.lineJoin = "round";
+  ctx.lineCap = "round";
+  ctx.lineWidth = 10;
+  // ctx.globalCompositeOperation = "multiply";
+
+  let isDrawing = false;
+  let lastx = 0;
+  let lasty = 0;
+  let pix = 0;
+  let buildUp = false;
+  function draw(e){
+    if(!isDrawing) return;
+
+    console.log(e);
+    ctx.strokeStyle = `hsl(${pix}, 100%, 50%)`;
+    // ctx.lineWidth = pix;
+    ctx.beginPath();
+    ctx.moveTo(lastx, lasty);
+    ctx.lineTo(e.offsetX, e.offsetY);
+    ctx.stroke();
+    [lastx, lasty] = [e.offsetX, e.offsetY];
+    // lastx = e.offsetX;
+    // lasty = e.offsetY;
+    pix++;
+    if(pix>=360)
+    {pix=0;}
+
+    if(ctx.lineWidth>=100 || ctx.lineWidth<=5)
+    {
+      buildUp = !buildUp;
+    }
+
+    if(buildUp)
+    {
+      ctx.lineWidth++;
+    }
+    else
+    {
+      ctx.lineWidth--;
+    }
+  }
+
+  
+  grabCanvas.addEventListener('mousedown', (e) => {
+    isDrawing=true;
+    [lastx, lasty] = [e.offsetX, e.offsetY];
+  });
+
+  grabCanvas.addEventListener('mousemove', draw);
+  grabCanvas.addEventListener('mouseup', () => isDrawing=false);
+  grabCanvas.addEventListener('mouseout', () => isDrawing=false);
+</script>
+
+<style>
+  html, body {
+    margin: 0;
+  }
+</style>
+
+</body>
+</html>
