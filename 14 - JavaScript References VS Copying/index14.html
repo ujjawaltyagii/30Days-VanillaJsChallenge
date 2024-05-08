@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>JS Reference VS Copy</title>
+  <link rel="icon" href="https://fav.farm/🔥" />
+</head>
+<body>
+
+  <script>
+    // strings, numbers and booleans
+    let age = 100;
+    let age2 = age;
+    console.log(age,age2);
+    age = 200;
+    console.log(age, age2);
+
+    let name = "Batman";
+    let name2 = name;
+    console.log(name, name2);
+    name = "Him";
+    console.log(name, name2);
+
+    // Let's say we have an array
+    const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
+
+    // and we want to make a copy of it.
+    const team = players; //reference
+    console.log(team, players);
+
+    
+    team[3] = "Goo";
+    console.log(team, players);   
+     // oh no - we have edited the original array too!
+    
+    const team2 = players.slice();
+    const team3 = [].concat(players);
+    const team4 = [...players];
+    const team5 = Array.from(players);
+
+    // with Objects
+    const person = {
+      name: 'Wes Bos',
+      age: 80
+    };
+
+    // and think we make a copy:
+    const captain = person;
+    captain.number = 99;
+
+    captain2 = Object.assign({}, person, {number: 999, age: 123});
+    console.log(captain);
+
+    const captain3 = {...person};
+    // Things to note - this is only 1 level deep - both for Arrays and Objects. lodash has a cloneDeep method, but you should think twice before using it.
+    const wes = {
+      name: 'abc',
+      age: 15, 
+      social:{
+        twitter: "tw",
+        fb: "wesbes"
+      }
+    }
+    console.log(wes);
+
+    const dev = Object.assign({}, wes);
+    dev.social.twitter = "X";
+    console.log(dev);
+
+    const dev2 = JSON.parse(JSON.stringfy(wes));
+
+  </script>
+
+</body>
+</html>
